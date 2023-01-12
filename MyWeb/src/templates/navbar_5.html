@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #1b4d00;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/" style="color:beige">
+        {% if session["id"] %}
+        <!--session["id"]에 값이 있다 >> 로그인이 됐다 이므로-->
+        <!--if session["id"] 이렇게만 해줘도 됨-->
+          {{session["id"]}}님
+        {% else %}
+          TADA-DATA
+        {% endif %}
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/about" style="color:beige">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/board" style="color:beige">Board</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:beige">
+              Product
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            {% if session["id"] %}
+              <a class="nav-link active" href="/logout" style="color:beige"> Log-out </a>
+            {% else %}
+              <a class="nav-link active" href="/login" style="color:beige"> Log-in </a>
+            {% endif %}
+            <!--얘는 메뉴명만 바뀐다고 되는 것이 아니고 logout을 눌렀을 때 logout 처리가 되어야 하므로 link를 따로 걸어줘야 하므로 link전에 조건문 걸어줘야 함-->
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--navbar 5점대 버전에서 가져다가 씀-->
